@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Papachou — L'éducation connectée, simplement</title>
+    <meta name="description"
+        content="Papachou est une plateforme numérique de gestion scolaire qui rapproche les établissements, les enseignants, les élèves et les parents. Téléchargez l'application Android." />
+    <meta name="theme-color" content="#E63B61" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Papachou — L'éducation connectée, simplement" />
+    <meta property="og:description"
+        content="Une plateforme de gestion scolaire pensée pour les écoles, les enseignants et les parents." />
+    <meta property="og:locale" content="fr_FR" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- Icônes SVG (sprite) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <symbol id="i-students" viewBox="0 0 24 24">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </symbol>
+            <symbol id="i-teacher" viewBox="0 0 24 24">
+                <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z" />
+                <path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z" />
+            </symbol>
+            <symbol id="i-report" viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6" />
+                <path d="M8 13h8M8 17h5" />
+            </symbol>
+            <symbol id="i-check" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="3" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+                <path d="m9 16 2 2 4-4" />
+            </symbol>
+            <symbol id="i-family" viewBox="0 0 24 24">
+                <path
+                    d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z" />
+            </symbol>
+            <symbol id="i-chart" viewBox="0 0 24 24">
+                <path d="M3 3v18h18" />
+                <path d="M7 15V11M12 15V7M17 15v-3" />
+            </symbol>
+            <symbol id="i-monitor" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+            </symbol>
+            <symbol id="i-phone" viewBox="0 0 24 24">
+                <rect x="6" y="2" width="12" height="20" rx="3" />
+                <path d="M11 18h2" />
+            </symbol>
+            <symbol id="i-globe" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12h20" />
+                <path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z" />
+            </symbol>
+            <symbol id="i-download" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m7 10 5 5 5-5M12 15V3" />
+            </symbol>
+            <symbol id="i-layers" viewBox="0 0 24 24">
+                <path d="m12 2 10 5-10 5L2 7z" />
+                <path d="m2 17 10 5 10-5M2 12l10 5 10-5" />
+            </symbol>
+            <symbol id="i-key" viewBox="0 0 24 24">
+                <circle cx="8" cy="15" r="4" />
+                <path d="m11 12 9-9M16 7l3 3M14 9l2 2" />
+            </symbol>
+            <symbol id="i-sparkle" viewBox="0 0 24 24">
+                <path d="M12 3v4M12 17v4M3 12h4M17 12h4" />
+                <path d="m6 6 2 2M16 16l2 2M18 6l-2 2M8 16l-2 2" />
+            </symbol>
+            <symbol id="i-tick" viewBox="0 0 24 24">
+                <path d="m5 12 5 5L20 7" />
+            </symbol>
+        </defs>
+    </svg>
+
+    <a class="skip" href="#contenu">Aller au contenu</a>
+
+    <!-- ============ NAVIGATION ============ -->
+    <header class="header">
+        <div class="container nav">
+            <a href="#accueil" class="brand" aria-label="Papachou — Accueil">
+                <!-- Pour utiliser votre vrai logo : remplacez ce bloc par
+             <img src="papachou.png" alt="Papachou" height="40" /> -->
+                <span class="brand-mark">P</span>
+                <span class="brand-name">Papachou</span>
+            </a>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu" />
+            <label for="menu-toggle" class="burger" aria-hidden="true"><span></span><span></span><span></span></label>
+
+            <nav class="menu" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                    <li><a href="#ecoles">Pour les écoles</a></li>
+                    <li><a href="#parents">Pour les parents</a></li>
+                    <li><a href="#applications">Applications</a></li>
+                </ul>
+                <div class="menu-actions">
+                    <a href="#applications" class="link-plain">Accéder à la plateforme</a>
+                    <a href="papachou.apk" download class="btn btn-primary btn-sm">Télécharger</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenu">
+
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="accueil">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <span class="pill"><svg class="ico">
+                            <use href="#i-sparkle" />
+                        </svg> Plateforme de gestion scolaire</span>
+                    <h1>L'éducation connectée, <span class="grad">simplement.</span></h1>
+                    <p class="lead">Papachou simplifie la gestion scolaire et rapproche les établissements, les
+                        enseignants et les parents grâce à un écosystème numérique pensé pour l'éducation.</p>
+                    <div class="btn-row">
+                        <a href="#presentation" class="btn btn-primary">Découvrir Papachou</a>
+                        <a href="#applications" class="btn btn-ghost"><svg class="ico">
+                                <use href="#i-download" />
+                            </svg> Télécharger l'application</a>
+                    </div>
+                    <p class="reassure"><svg class="ico">
+                            <use href="#i-tick" />
+                        </svg> Un espace adapté à chaque profil, selon les autorisations de l'établissement.</p>
+                </div>
+
+                <!-- Visuel : ordinateur + smartphone (HTML/CSS) -->
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="laptop">
+                        <div class="laptop-screen">
+                            <div class="dash">
+                                <div class="dash-side">
+                                    <i class="dash-logo">P</i>
+                                    <i class="dash-link on"></i><i class="dash-link"></i><i class="dash-link"></i><i
+                                        class="dash-link"></i>
+                                </div>
+                                <div class="dash-main">
+                                    <div class="dash-top"><b></b><i></i></div>
+                                    <div class="dash-cards">
+                                        <div><span></span><em></em></div>
+                                        <div><span></span><em></em></div>
+                                        <div><span></span><em></em></div>
+                                    </div>
+                                    <div class="dash-chart">
+                                        <i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i
+                                            style="height:80%"></i><i style="height:58%"></i><i
+                                            style="height:90%"></i><i style="height:70%"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="laptop-base"></div>
+                    </div>
+
+                    <div class="phone">
+                        <div class="phone-screen">
+                            <div class="ph-head"><i>P</i><b></b></div>
+                            <div class="ph-hero"><span></span><em></em></div>
+                            <div class="ph-row"><i></i>
+                                <div><b></b><em></em></div>
+                            </div>
+                            <div class="ph-row"><i></i>
+                                <div><b></b><em></em></div>
+                            </div>
+                            <div class="ph-row"><i></i>
+                                <div><b></b><em></em></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="float f1"><span class="f-ico"><svg class="ico">
+                                <use href="#i-report" />
+                            </svg></span>
+                        <div><b>Bulletin généré</b><em>Format PDF</em></div>
+                    </div>
+                    <div class="float f2"><span class="f-ico"><svg class="ico">
+                                <use href="#i-check" />
+                            </svg></span>
+                        <div><b>Présences</b><em>Enregistrées</em></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PRÉSENTATION ============ -->
+        <section class="section" id="presentation">
+            <div class="container about">
+                <div>
+                    <span class="eyebrow">Notre vision</span>
+                    <h2>Une seule vision. Une école mieux organisée.</h2>
+                    <p>Papachou réunit en un même endroit les activités qui font vivre un établissement : inscriptions,
+                        classes, présences, notes et bulletins. Au lieu de jongler avec plusieurs outils, les
+                        informations circulent mieux entre l'administration, les enseignants, les élèves et les
+                        familles.</p>
+                    <p>Le projet s'inscrit dans une démarche de transformation numérique de l'éducation en Afrique, avec
+                        un intérêt particulier pour le Cameroun.</p>
+                </div>
+                <div class="hub" aria-hidden="true">
+                    <div class="hub-center"><span>P</span></div>
+                    <div class="hub-node n1"><svg class="ico">
+                            <use href="#i-layers" />
+                        </svg>Écoles</div>
+                    <div class="hub-node n2"><svg class="ico">
+                            <use href="#i-teacher" />
+                        </svg>Enseignants</div>
+                    <div class="hub-node n3"><svg class="ico">
+                            <use href="#i-students" />
+                        </svg>Élèves</div>
+                    <div class="hub-node n4"><svg class="ico">
+                            <use href="#i-family" />
+                        </svg>Parents</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FONCTIONNALITÉS ============ -->
+        <section class="section section-soft" id="fonctionnalites">
+            <div class="container">
+                <div class="head">
+                    <span class="eyebrow">Fonctionnalités</span>
+                    <h2>Tout l'essentiel de la gestion scolaire, au même endroit.</h2>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <span class="icon-box"><svg class="ico">
+                                <use href="#i-students" />
+                            </svg></span>
+                        <h3>Gestion des élèves</h3>
+                        <p>Organisez les dossiers des élèves, les inscriptions et les affectations aux classes.</p>
+                    </article>
+                    <article class="card">
+                        <span class="icon-box"><svg class="ico">
+                                <use href="#i-teacher" />
+                            </svg></span>
+                        <h3>Gestion des enseignants</h3>
+                        <p>Facilitez l'organisation des classes et des activités pédagogiques.</p>
+                    </article>
+                    <article class="card">
+                        <span class="icon-box"><svg class="ico">
+                                <use href="#i-report" />
+                            </svg></span>
+                        <h3>Notes et bulletins</h3>
+                        <p>Simplifiez le suivi des évaluations, des résultats et des bulletins scolaires.</p>
+                    </article>
+                    <article class="card">
+                        <span class="icon-box"><svg class="ico">
+                                <use href="#i-check" />
+                            </svg></span>
+                        <h3>Suivi des présences</h3>
+                        <p>Enregistrez et consultez les informations relatives à la présence des élèves.</p>
+                    </article>
+                    <article class="card">
+                        <span class="icon-box"><svg class="ico">
+                                <use href="#i-family" />
+                            </svg></span>
+                        <h3>Espace parents</h3>
+                        <p>Facilitez l'accès aux informations scolaires des enfants.</p>
+                    </article>
+                    <article class="card">
+                        <span class="icon-box"><svg class="ico">
+                                <use href="#i-chart" />
+                            </svg></span>
+                        <h3>Administration et statistiques</h3>
+                        <p>Centralisez les informations utiles à la gestion et au suivi des établissements.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ÉCOLES ============ -->
+        <section class="section" id="ecoles">
+            <div class="container split">
+                <div>
+                    <span class="eyebrow">Pour les établissements</span>
+                    <h2>Donnez une nouvelle dimension à la gestion de votre établissement.</h2>
+                    <ul class="checks">
+                        <li><span class="tick"><svg class="ico">
+                                    <use href="#i-tick" />
+                                </svg></span>
+                            <div><b>Centraliser les informations scolaires</b>
+                                <p>Un espace de travail propre à chaque établissement.</p>
+                            </div>
+                        </li>
+                        <li><span class="tick"><svg class="ico">
+                                    <use href="#i-tick" />
+                                </svg></span>
+                            <div><b>Mieux organiser les activités administratives</b>
+                                <p>Utilisateurs, rôles, permissions et années scolaires.</p>
+                            </div>
+                        </li>
+                        <li><span class="tick"><svg class="ico">
+                                    <use href="#i-tick" />
+                                </svg></span>
+                            <div><b>Faciliter le suivi des élèves et des résultats</b>
+                                <p>Des notes aux bulletins, dans un même flux.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel" aria-hidden="true">
+                    <div class="panel-bar"><i></i><i></i><i></i></div>
+                    <div class="panel-body">
+                        <div class="p-title"></div>
+                        <div class="p-row"><span class="p-dot"></span><b></b><em class="ok"></em></div>
+                        <div class="p-row"><span class="p-dot"></span><b></b><em class="ok"></em></div>
+                        <div class="p-row"><span class="p-dot"></span><b></b><em></em></div>
+                        <div class="p-row"><span class="p-dot"></span><b></b><em class="ok"></em></div>
+                        <div class="p-bars"><i style="height:45%"></i><i style="height:70%"></i><i
+                                style="height:55%"></i><i style="height:85%"></i><i style="height:65%"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PARENTS ============ -->
+        <section class="section section-soft" id="parents">
+            <div class="container split split-reverse">
+                <div class="phone-stage" aria-hidden="true">
+                    <div class="phone phone-lg">
+                        <div class="phone-screen">
+                            <div class="ph-head"><i>P</i><b></b></div>
+                            <div class="ph-hero"><span></span><em></em></div>
+                            <div class="ph-row"><i></i>
+                                <div><b></b><em></em></div>
+                            </div>
+                            <div class="ph-row"><i></i>
+                                <div><b></b><em></em></div>
+                            </div>
+                            <div class="ph-row"><i></i>
+                                <div><b></b><em></em></div>
+                            </div>
+                            <div class="ph-row"><i></i>
+                                <div><b></b><em></em></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="eyebrow">Pour les parents</span>
+                    <h2>La scolarité de vos enfants, plus proche de vous.</h2>
+                    <p>Papachou a pour ambition de faciliter le suivi scolaire en rapprochant les familles et les
+                        établissements. Retrouvez les informations auxquelles vous êtes autorisé à accéder grâce aux
+                        outils mis à disposition par votre établissement.</p>
+                    <ul class="tags">
+                        <li>Notes et bulletins</li>
+                        <li>Présences et absences</li>
+                        <li>Informations de scolarité</li>
+                        <li>Évolution des résultats</li>
+                    </ul>
+                    <p class="note">Les fonctionnalités accessibles dépendent des autorisations et des outils activés
+                        par chaque établissement.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ APPLICATIONS ============ -->
+        <section class="section" id="applications">
+            <div class="container">
+                <div class="head">
+                    <span class="eyebrow">Téléchargements</span>
+                    <h2>Papachou vous accompagne sur vos appareils.</h2>
+                    <p>Choisissez l'application adaptée à votre utilisation.</p>
+                </div>
+
+                <div class="grid-3 apps">
+
+                    <!-- Console -->
+                    <article class="app-card">
+                        <div class="app-art" aria-hidden="true"><svg class="ico big">
+                                <use href="#i-monitor" />
+                            </svg></div>
+                        <span class="status soon">Bientôt disponible</span>
+                        <h3>Papachou Console</h3>
+                        <p class="audience">Administrateurs, directions et utilisateurs autorisés</p>
+                        <p>Une interface dédiée à l'organisation et au suivi des activités scolaires depuis un
+                            ordinateur compatible.</p>
+                        <span class="btn btn-disabled" role="link" aria-disabled="true">Bientôt disponible</span>
+                    </article>
+
+                    <!-- Mobile (disponible) -->
+                    <article class="app-card app-featured">
+                        <span class="ribbon">Disponible</span>
+                        <div class="app-art" aria-hidden="true"><svg class="ico big">
+                                <use href="#i-phone" />
+                            </svg></div>
+                        <span class="status live">Android</span>
+                        <h3>Papachou Mobile</h3>
+                        <p class="audience">Utilisateurs mobiles autorisés</p>
+                        <p>Retrouvez les fonctionnalités scolaires disponibles sur votre appareil mobile, selon votre
+                            profil et vos permissions.</p>
+                        <a class="btn btn-primary" href="papachou.apk" download="papachou.apk">
+                            <svg class="ico">
+                                <use href="#i-download" />
+                            </svg> Télécharger pour Android
+                        </a>
+                        <p class="hint">Fichier : <code>papachou.apk</code>. À l'installation, Android peut demander
+                            d'autoriser les sources inconnues.</p>
+                    </article>
+
+                    <!-- Web -->
+                    <article class="app-card">
+                        <div class="app-art" aria-hidden="true"><svg class="ico big">
+                                <use href="#i-globe" />
+                            </svg></div>
+                        <span class="status soon">Bientôt disponible</span>
+                        <h3>Papachou Web</h3>
+                        <p class="audience">Utilisateurs souhaitant accéder depuis un navigateur</p>
+                        <p>Accédez à la version web de Papachou sans installer de logiciel supplémentaire, lorsqu'elle
+                            est disponible.</p>
+                        <span class="btn btn-disabled" role="link" aria-disabled="true">Bientôt disponible</span>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONFIANCE ============ -->
+        <section class="section section-soft" id="principes">
+            <div class="container">
+                <div class="head">
+                    <span class="eyebrow">Nos principes</span>
+                    <h2>Un projet construit autour de quatre idées simples.</h2>
+                </div>
+                <div class="grid-4">
+                    <div class="mini"><span class="icon-box sm"><svg class="ico">
+                                <use href="#i-sparkle" />
+                            </svg></span>
+                        <h3>Simplicité d'utilisation</h3>
+                        <p>Des interfaces claires, prises en main rapidement.</p>
+                    </div>
+                    <div class="mini"><span class="icon-box sm"><svg class="ico">
+                                <use href="#i-layers" />
+                            </svg></span>
+                        <h3>Organisation des informations</h3>
+                        <p>Des données structurées, au même endroit.</p>
+                    </div>
+                    <div class="mini"><span class="icon-box sm"><svg class="ico">
+                                <use href="#i-key" />
+                            </svg></span>
+                        <h3>Accès adapté à chaque profil</h3>
+                        <p>Rôles et permissions pour chaque utilisateur.</p>
+                    </div>
+                    <div class="mini"><span class="icon-box sm"><svg class="ico">
+                                <use href="#i-globe" />
+                            </svg></span>
+                        <h3>Transformation numérique</h3>
+                        <p>Accompagner la modernisation de l'éducation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ APPEL À L'ACTION ============ -->
+        <section class="section">
+            <div class="container">
+                <div class="cta">
+                    <h2>Faisons avancer l'éducation, ensemble.</h2>
+                    <p>Découvrez Papachou et explorez les outils conçus pour simplifier la gestion scolaire.</p>
+                    <div class="btn-row center">
+                        <a href="#applications" class="btn btn-white">Découvrir les applications</a>
+                        <a href="#presentation" class="btn btn-outline-white">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="container foot-grid">
+            <div class="foot-brand">
+                <a href="#accueil" class="brand" aria-label="Papachou — Accueil">
+                    <span class="brand-mark">P</span>
+                    <span class="brand-name">Papachou</span>
+                </a>
+                <p>Plateforme numérique de gestion scolaire pour moderniser l'éducation et faciliter le lien entre
+                    écoles, enseignants, élèves et parents.</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                    <li><a href="#ecoles">Pour les écoles</a></li>
+                    <li><a href="#parents">Pour les parents</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Applications</h4>
+                <ul>
+                    <li><a href="papachou.apk" download>Papachou Mobile (Android)</a></li>
+                    <li><a href="#applications">Papachou Console</a></li>
+                    <li><a href="#applications">Papachou Web</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Informations</h4>
+                <ul>
+                    <!-- Remplacez les "#" par vos pages quand elles existeront -->
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container foot-bottom">
+            <p>© 2026 Papachou. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
